@@ -20,6 +20,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             UIAction(title: "Choose photo", image: UIImage(systemName: "photo.on.rectangle.angled"), handler: choosePhoto)])
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), menu: menu)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         
         
     }
@@ -62,6 +63,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         dismiss(animated: true, completion: nil)
         guard let image = info[.originalImage] as? UIImage else {return}
         imageView.image = image
+    }
+    
+    @objc func shareTapped(){
+        guard let image = (imageView.image?.jpegData(compressionQuality: 1)) else{
+                   print("No image found ")
+                   return
+               }
+               let ac = UIActivityViewController(activityItems: [image], applicationActivities: [])
+               ac.popoverPresentationController?.barButtonItem = navigationItem.leftBarButtonItem
+               present(ac, animated: true, completion: nil)
     }
     
    
