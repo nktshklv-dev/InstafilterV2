@@ -10,10 +10,11 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     @IBOutlet var imageView: UIImageView!
+    var image: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Instafilter"
+        title = "CameraFilter"
         let menu = UIMenu(title: "", children: [
             UIAction(title: "Take a photo", image: UIImage(systemName: "camera"), handler: takePhoto),
             UIAction(title: "Choose photo", image: UIImage(systemName: "photo.on.rectangle.angled"), handler: choosePhoto)])
@@ -22,6 +23,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         
     }
+    
+    
     
     
     
@@ -51,6 +54,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         dismiss(animated: true, completion: nil)
         guard let image = info[.originalImage] as? UIImage else {return}
         imageView.image = image
+    }
+    
+    
+    
+    @IBAction func unwindToOne(_ sender: UIStoryboardSegue){
+        
     }
     
     

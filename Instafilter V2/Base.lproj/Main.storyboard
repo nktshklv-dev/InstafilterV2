@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Instafilter_V2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="first" id="BYZ-38-t0r" customClass="ViewController" customModule="Instafilter_V2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,7 +81,7 @@
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="rsE-Ic-ZpI">
                                 <rect key="frame" x="18" y="703" width="378" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="29" id="aiJ-aB-jql"/>
+                                    <constraint firstAttribute="height" constant="29" id="G65-Lp-hTe"/>
                                 </constraints>
                                 <connections>
                                     <action selector="changedValue:" destination="9DB-sr-TG0" eventType="valueChanged" id="y2B-vG-W1d"/>
@@ -96,36 +96,51 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8M-Vv-Ooe">
-                                <rect key="frame" x="330" y="782" width="61" height="31"/>
+                                <rect key="frame" x="306" y="782" width="85" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="3g7-rp-dFu"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Apply"/>
                                 <connections>
-                                    <action selector="applyButton:" destination="9DB-sr-TG0" eventType="touchUpInside" id="Uby-Sc-2Ia"/>
+                                    <segue destination="QvR-yO-OAA" kind="unwind" unwindAction="unwindToOne:" id="5Y3-10-JFK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Filter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNV-Ad-Nri">
+                                <rect key="frame" x="116" y="787" width="182" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hB3-jW-qIF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8pl-zw-qUz" firstAttribute="trailing" secondItem="rsE-Ic-ZpI" secondAttribute="trailing" id="B0b-O5-GWC"/>
-                            <constraint firstItem="j1e-vB-1IE" firstAttribute="top" secondItem="rsE-Ic-ZpI" secondAttribute="bottom" constant="50" id="IKC-QN-NPo"/>
-                            <constraint firstItem="8pl-zw-qUz" firstAttribute="trailing" secondItem="e1g-UU-PQ4" secondAttribute="trailingMargin" id="J3V-nM-yEt"/>
-                            <constraint firstItem="8pl-zw-qUz" firstAttribute="top" secondItem="hB3-jW-qIF" secondAttribute="top" constant="12" id="XhW-X7-rhS"/>
-                            <constraint firstItem="8pl-zw-qUz" firstAttribute="leading" secondItem="rsE-Ic-ZpI" secondAttribute="leading" id="YhC-qW-ERT"/>
-                            <constraint firstItem="rsE-Ic-ZpI" firstAttribute="leading" secondItem="j1e-vB-1IE" secondAttribute="leading" id="geG-7l-r3X"/>
-                            <constraint firstItem="8pl-zw-qUz" firstAttribute="leading" secondItem="e1g-UU-PQ4" secondAttribute="leadingMargin" id="hUr-6t-djh"/>
-                            <constraint firstItem="j1e-vB-1IE" firstAttribute="baseline" secondItem="N8M-Vv-Ooe" secondAttribute="baseline" id="j9X-4E-dk6"/>
-                            <constraint firstItem="hB3-jW-qIF" firstAttribute="trailing" secondItem="N8M-Vv-Ooe" secondAttribute="trailing" constant="23" id="trk-GX-A8K"/>
-                            <constraint firstItem="hB3-jW-qIF" firstAttribute="bottom" secondItem="j1e-vB-1IE" secondAttribute="bottom" constant="49" id="uZj-6l-8Zu"/>
-                            <constraint firstItem="rsE-Ic-ZpI" firstAttribute="top" secondItem="8pl-zw-qUz" secondAttribute="bottom" constant="28" id="vYc-VC-kT4"/>
+                            <constraint firstItem="rsE-Ic-ZpI" firstAttribute="leading" secondItem="j1e-vB-1IE" secondAttribute="leading" id="0FD-oq-EXm"/>
+                            <constraint firstItem="rsE-Ic-ZpI" firstAttribute="top" secondItem="8pl-zw-qUz" secondAttribute="bottom" constant="28" id="F2u-cm-86S"/>
+                            <constraint firstItem="8pl-zw-qUz" firstAttribute="leading" secondItem="rsE-Ic-ZpI" secondAttribute="leading" id="NVw-n1-gYr"/>
+                            <constraint firstItem="8pl-zw-qUz" firstAttribute="trailing" secondItem="rsE-Ic-ZpI" secondAttribute="trailing" id="O0q-P7-3Re"/>
+                            <constraint firstItem="j1e-vB-1IE" firstAttribute="top" secondItem="rsE-Ic-ZpI" secondAttribute="bottom" constant="50" id="OJV-6M-Sdn"/>
+                            <constraint firstItem="hB3-jW-qIF" firstAttribute="trailing" secondItem="N8M-Vv-Ooe" secondAttribute="trailing" constant="23" id="Oa3-TF-WZG"/>
+                            <constraint firstItem="hB3-jW-qIF" firstAttribute="bottom" secondItem="j1e-vB-1IE" secondAttribute="bottom" constant="49" id="Rla-wr-7K4"/>
+                            <constraint firstItem="8pl-zw-qUz" firstAttribute="leading" secondItem="e1g-UU-PQ4" secondAttribute="leadingMargin" id="THT-Ul-kOG"/>
+                            <constraint firstItem="j1e-vB-1IE" firstAttribute="baseline" secondItem="N8M-Vv-Ooe" secondAttribute="baseline" id="XqB-rL-9HL"/>
+                            <constraint firstItem="8pl-zw-qUz" firstAttribute="trailing" secondItem="e1g-UU-PQ4" secondAttribute="trailingMargin" id="Y7a-pl-Z7B"/>
+                            <constraint firstItem="rsE-Ic-ZpI" firstAttribute="centerX" secondItem="YNV-Ad-Nri" secondAttribute="centerX" id="efc-dy-1Tg"/>
+                            <constraint firstItem="8pl-zw-qUz" firstAttribute="top" secondItem="hB3-jW-qIF" secondAttribute="top" constant="12" id="eiP-me-G40"/>
+                            <constraint firstItem="N8M-Vv-Ooe" firstAttribute="leading" secondItem="YNV-Ad-Nri" secondAttribute="trailing" constant="8" id="gMC-3X-JyW"/>
+                            <constraint firstItem="YNV-Ad-Nri" firstAttribute="centerY" secondItem="N8M-Vv-Ooe" secondAttribute="centerY" id="rre-dc-5OG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Choose filter" id="cBx-IC-dlN"/>
                     <connections>
+                        <outlet property="currentFilterLabel" destination="YNV-Ad-Nri" id="oEM-zX-7oO"/>
                         <outlet property="imageView" destination="8pl-zw-qUz" id="tlm-3m-FcZ"/>
+                        <outlet property="intensity" destination="rsE-Ic-ZpI" id="xGu-Dh-fvI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mQH-EE-YfF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="QvR-yO-OAA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3657.971014492754" y="83.705357142857139"/>
         </scene>
