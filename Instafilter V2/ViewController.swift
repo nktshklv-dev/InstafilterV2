@@ -42,6 +42,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         present(picker, animated: true)
     }
     
+    
+    @IBAction func save(_ sender: Any) {
+        guard let image = imageView.image else {return}
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(imageSave(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    
+    
     func choosePhoto(_ action: UIAction){
         let picker = UIImagePickerController()
         
@@ -56,14 +64,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         imageView.image = image
     }
     
+   
     
     
+    
+    @objc func imageSave(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer){
+           if let error = error {
+               let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+               ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+               present(ac, animated: true, completion: nil)
+           }
+           else{
+               let ac = UIAlertController(title: "Saved!", message: "Your image has been saved to your photo library.", preferredStyle: .alert)
+               ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+               present(ac, animated: true, completion: nil)
+           }
+       }
+       
     @IBAction func unwindToOne(_ sender: UIStoryboardSegue){
         
     }
-    
-    
-
-
 }
 

@@ -81,8 +81,9 @@ class FilterViewController: UIViewController {
                    currentFilter.setValue(CIVector(x: image.size.width / 2, y: image.size.height / 2), forKey: kCIInputCenterKey)
                }
         if let cgImage = context.createCGImage(outputImage, from: outputImage.extent){
-            image = UIImage(cgImage: cgImage)
-            imageView.image = image
+            let newImage = UIImage(cgImage: cgImage)
+            image = newImage
+            imageView.image = newImage
             
         }
     }
