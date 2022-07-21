@@ -67,6 +67,7 @@ class FilterViewController: UIViewController {
     func applyProcessing(){
         guard let outputImage = currentFilter.outputImage else {return}
         let inputKeys = currentFilter.inputKeys
+        imageView.image = image
         
         if inputKeys.contains(kCIInputIntensityKey){
                    currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
@@ -82,8 +83,8 @@ class FilterViewController: UIViewController {
                }
         if let cgImage = context.createCGImage(outputImage, from: outputImage.extent){
             let newImage = UIImage(cgImage: cgImage)
-            image = newImage
             imageView.image = newImage
+            image = newImage
             
         }
     }

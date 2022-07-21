@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
@@ -14,6 +15,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        content.title = "Hey!"
+        content.body = "It's time to filter some photos!"
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = 10
+        dateComponents.minute = 30
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
+        
         title = "CameraFilter"
         let menu = UIMenu(title: "", children: [
             UIAction(title: "Take a photo", image: UIImage(systemName: "camera"), handler: takePhoto),
